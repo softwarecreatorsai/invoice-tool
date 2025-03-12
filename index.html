@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +8,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts - Poppins for English, Heebo for Hebrew -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- jsPDF for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <!-- html2canvas for PDF rendering -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
-    .lang-en {
+    body {
       font-family: 'Poppins', sans-serif;
-    }
-
-    .lang-he {
-      font-family: 'Heebo', sans-serif;
     }
 
     .animate-fade-in {
@@ -72,43 +67,29 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-gray-50 to-white transition-colors duration-300 lang-en">
+<body class="bg-gradient-to-b from-gray-50 to-white transition-colors duration-300">
   <!-- Header -->
   <header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200 no-print">
     <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16">
       <a href="#" class="flex items-center gap-2">
         <i class="fas fa-file-invoice-dollar text-blue-600 text-xl"></i>
         <span class="text-xl font-semibold">
-          <span data-lang-en="Invoice" data-lang-he="חשבונית"></span><span class="text-blue-600" data-lang-en="Master" data-lang-he="מאסטר"></span>
+          Invoice<span class="text-blue-600">Master</span>
         </span>
       </a>
 
-      <div class="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
-        <nav class="flex items-center mr-6 rtl:mr-0 rtl:ml-6">
-          <a href="#features" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="Features" data-lang-he="תכונות"></a>
-          <a href="#how-it-works" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="How It Works" data-lang-he="איך זה עובד"></a>
-          <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="FAQ" data-lang-he="שאלות נפוצות"></a>
+      <div class="hidden md:flex items-center space-x-4">
+        <nav class="flex items-center mr-6">
+          <a href="#features" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">Features</a>
+          <a href="#how-it-works" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">How It Works</a>
+          <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">FAQ</a>
         </nav>
 
-        <!-- Language Switcher -->
-        <div class="relative">
-          <button id="language-switcher" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-            <span data-lang-en="English" data-lang-he="עברית"></span>
-            <i class="fas fa-chevron-down ml-2 rtl:ml-0 rtl:mr-2"></i>
-          </button>
-          <div id="language-dropdown" class="absolute right-0 rtl:left-0 rtl:right-auto mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
-            <div class="py-1">
-              <button class="language-option w-full text-left rtl:text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</button>
-              <button class="language-option w-full text-left rtl:text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="he">עברית</button>
-            </div>
-          </div>
-        </div>
-
         <button id="save-template-btn" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm">
-          <i class="fas fa-save mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Save Template" data-lang-he="שמור תבנית"></span>
+          <i class="fas fa-save mr-2"></i> Save Template
         </button>
 
-        <button id="theme-toggle" class="ml-4 rtl:ml-0 rtl:mr-4 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-500">
+        <button id="theme-toggle" class="ml-4 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-500">
           <i class="fas fa-moon"></i>
           <i class="fas fa-sun hidden"></i>
         </button>
@@ -123,19 +104,13 @@
     <div class="md:hidden hidden bg-white border-b border-gray-200" id="mobile-menu">
       <div class="container mx-auto px-4 py-3">
         <nav class="flex flex-col space-y-3">
-          <a href="#features" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="Features" data-lang-he="תכונות"></a>
-          <a href="#how-it-works" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="How It Works" data-lang-he="איך זה עובד"></a>
-          <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600" data-lang-en="FAQ" data-lang-he="שאלות נפוצות"></a>
+          <a href="#features" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">Features</a>
+          <a href="#how-it-works" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">How It Works</a>
+          <a href="#faq" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600">FAQ</a>
         </nav>
-        <div class="mt-4 mb-2 space-y-2">
-          <!-- Mobile Language Switcher -->
-          <select id="mobile-language-switcher" class="w-full px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white">
-            <option value="en">English</option>
-            <option value="he">עברית</option>
-          </select>
-
+        <div class="mt-4 mb-2">
           <button id="mobile-save-template-btn" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-            <i class="fas fa-save mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Save Template" data-lang-he="שמור תבנית"></span>
+            <i class="fas fa-save mr-2"></i> Save Template
           </button>
         </div>
       </div>
@@ -147,10 +122,10 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="mb-8 text-center animate-slide-up">
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900">
-          <span data-lang-en="Create Professional" data-lang-he="צור חשבוניות"></span> <span class="text-blue-600" data-lang-en="Invoices" data-lang-he="מקצועיות"></span> <span data-lang-en="in Seconds" data-lang-he="תוך שניות"></span>
+          Create Professional <span class="text-blue-600">Invoices</span> in Seconds
         </h1>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          <span data-lang-en="Generate, customize, and download professional invoices for your business without leaving your browser." data-lang-he="צור, התאם אישית והורד חשבוניות מקצועיות לעסק שלך מבלי לעזוב את הדפדפן."></span>
+          Generate, customize, and download professional invoices for your business without leaving your browser.
         </p>
       </div>
 
@@ -162,31 +137,31 @@
               <!-- Company Information -->
               <div class="mb-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <i class="fas fa-building mr-2 rtl:mr-0 rtl:ml-2 text-blue-600"></i>
-                  <span data-lang-en="Company Information" data-lang-he="פרטי החברה"></span>
+                  <i class="fas fa-building mr-2 text-blue-600"></i>
+                  Company Information
                 </h2>
                 <div class="space-y-4">
                   <div>
-                    <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Company Name" data-lang-he="שם החברה"></label>
-                    <input type="text" id="company-name" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="Your Company Name" data-lang-placeholder-he="שם החברה שלך">
+                    <label for="company-name" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                    <input type="text" id="company-name" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="Your Company Name">
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label for="company-email" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Email" data-lang-he="אימייל"></label>
-                      <input type="email" id="company-email" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="your@email.com" data-lang-placeholder-he="your@email.com">
+                      <label for="company-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                      <input type="email" id="company-email" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="your@email.com">
                     </div>
                     <div>
-                      <label for="company-phone" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Phone" data-lang-he="טלפון"></label>
-                      <input type="tel" id="company-phone" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="(123) 456-7890" data-lang-placeholder-he="(123) 456-7890">
+                      <label for="company-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                      <input type="tel" id="company-phone" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="(123) 456-7890">
                     </div>
                   </div>
                   <div>
-                    <label for="company-address" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Address" data-lang-he="כתובת"></label>
-                    <textarea id="company-address" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="123 Business St, City, Country" data-lang-placeholder-he="רחוב העסקים 123, עיר, מדינה"></textarea>
+                    <label for="company-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                    <textarea id="company-address" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="123 Business St, City, Country"></textarea>
                   </div>
                   <div>
-                    <label for="company-logo" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Logo URL (optional)" data-lang-he="כתובת לוגו (אופציונלי)"></label>
-                    <input type="url" id="company-logo" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="https://example.com/logo.png" data-lang-placeholder-he="https://example.com/logo.png">
+                    <label for="company-logo" class="block text-sm font-medium text-gray-700 mb-1">Logo URL (optional)</label>
+                    <input type="url" id="company-logo" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="https://example.com/logo.png">
                   </div>
                 </div>
               </div>
@@ -194,27 +169,27 @@
               <!-- Client Information -->
               <div class="mb-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <i class="fas fa-user mr-2 rtl:mr-0 rtl:ml-2 text-blue-600"></i>
-                  <span data-lang-en="Client Information" data-lang-he="פרטי הלקוח"></span>
+                  <i class="fas fa-user mr-2 text-blue-600"></i>
+                  Client Information
                 </h2>
                 <div class="space-y-4">
                   <div>
-                    <label for="client-name" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Client Name" data-lang-he="שם הלקוח"></label>
-                    <input type="text" id="client-name" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="Client Company Name" data-lang-placeholder-he="שם חברת הלקוח">
+                    <label for="client-name" class="block text-sm font-medium text-gray-700 mb-1">Client Name</label>
+                    <input type="text" id="client-name" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="Client Company Name">
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label for="client-email" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Email" data-lang-he="אימייל"></label>
-                      <input type="email" id="client-email" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="client@email.com" data-lang-placeholder-he="client@email.com">
+                      <label for="client-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                      <input type="email" id="client-email" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="client@email.com">
                     </div>
                     <div>
-                      <label for="client-phone" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Phone" data-lang-he="טלפון"></label>
-                      <input type="tel" id="client-phone" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="(123) 456-7890" data-lang-placeholder-he="(123) 456-7890">
+                      <label for="client-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                      <input type="tel" id="client-phone" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="(123) 456-7890">
                     </div>
                   </div>
                   <div>
-                    <label for="client-address" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Address" data-lang-he="כתובת"></label>
-                    <textarea id="client-address" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="456 Client St, City, Country" data-lang-placeholder-he="רחוב הלקוח 456, עיר, מדינה"></textarea>
+                    <label for="client-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                    <textarea id="client-address" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="456 Client St, City, Country"></textarea>
                   </div>
                 </div>
               </div>
@@ -222,31 +197,31 @@
               <!-- Invoice Details -->
               <div class="mb-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <i class="fas fa-file-invoice mr-2 rtl:mr-0 rtl:ml-2 text-blue-600"></i>
-                  <span data-lang-en="Invoice Details" data-lang-he="פרטי החשבונית"></span>
+                  <i class="fas fa-file-invoice mr-2 text-blue-600"></i>
+                  Invoice Details
                 </h2>
                 <div class="space-y-4">
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label for="invoice-number" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Invoice #" data-lang-he="מספר חשבונית"></label>
-                      <input type="text" id="invoice-number" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="INV-001" data-lang-placeholder-he="INV-001">
+                      <label for="invoice-number" class="block text-sm font-medium text-gray-700 mb-1">Invoice #</label>
+                      <input type="text" id="invoice-number" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="INV-001">
                     </div>
                     <div>
-                      <label for="invoice-date" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Date" data-lang-he="תאריך"></label>
+                      <label for="invoice-date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
                       <input type="date" id="invoice-date" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors">
                     </div>
                     <div>
-                      <label for="invoice-due-date" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Due Date" data-lang-he="תאריך לתשלום"></label>
+                      <label for="invoice-due-date" class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
                       <input type="date" id="invoice-due-date" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors">
                     </div>
                   </div>
                   <div>
-                    <label for="payment-terms" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Payment Terms" data-lang-he="תנאי תשלום"></label>
-                    <input type="text" id="payment-terms" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="Due on receipt, Net 30, etc." data-lang-placeholder-he="לתשלום עם קבלה, שוטף + 30, וכו'">
+                    <label for="payment-terms" class="block text-sm font-medium text-gray-700 mb-1">Payment Terms</label>
+                    <input type="text" id="payment-terms" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="Due on receipt, Net 30, etc.">
                   </div>
                   <div>
-                    <label for="invoice-notes" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Notes (optional)" data-lang-he="הערות (אופציונלי)"></label>
-                    <textarea id="invoice-notes" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="Thank you for your business!" data-lang-placeholder-he="תודה על העסקים שלך!"></textarea>
+                    <label for="invoice-notes" class="block text-sm font-medium text-gray-700 mb-1">Notes (optional)</label>
+                    <textarea id="invoice-notes" rows="2" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="Thank you for your business!"></textarea>
                   </div>
                 </div>
               </div>
@@ -255,11 +230,11 @@
               <div class="mb-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center justify-between">
                   <span class="flex items-center">
-                    <i class="fas fa-list mr-2 rtl:mr-0 rtl:ml-2 text-blue-600"></i>
-                    <span data-lang-en="Line Items" data-lang-he="פריטים"></span>
+                    <i class="fas fa-list mr-2 text-blue-600"></i>
+                    Line Items
                   </span>
                   <button id="add-item-btn" class="text-sm bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md inline-flex items-center">
-                    <i class="fas fa-plus mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-lang-en="Add Item" data-lang-he="הוסף פריט"></span>
+                    <i class="fas fa-plus mr-1"></i> Add Item
                   </button>
                 </h2>
                 <div id="line-items-container" class="space-y-4">
@@ -267,20 +242,20 @@
                   <div class="line-item bg-gray-50 p-4 rounded-md border border-gray-200">
                     <div class="grid grid-cols-12 gap-3">
                       <div class="col-span-12 sm:col-span-5">
-                        <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Description" data-lang-he="תיאור"></label>
-                        <input type="text" class="item-description w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="Item description" data-lang-placeholder-he="תיאור הפריט">
+                        <label class="block text-xs font-medium text-gray-700 mb-1">Description</label>
+                        <input type="text" class="item-description w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="Item description">
                       </div>
                       <div class="col-span-4 sm:col-span-2">
-                        <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Quantity" data-lang-he="כמות"></label>
-                        <input type="number" min="1" class="item-quantity w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="Qty" data-lang-placeholder-he="כמות" value="1">
+                        <label class="block text-xs font-medium text-gray-700 mb-1">Quantity</label>
+                        <input type="number" min="1" class="item-quantity w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="Qty" value="1">
                       </div>
                       <div class="col-span-8 sm:col-span-2">
-                        <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Price" data-lang-he="מחיר"></label>
-                        <input type="number" min="0" step="0.01" class="item-price w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="0.00" data-lang-placeholder-he="0.00">
+                        <label class="block text-xs font-medium text-gray-700 mb-1">Price</label>
+                        <input type="number" min="0" step="0.01" class="item-price w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="0.00">
                       </div>
                       <div class="col-span-11 sm:col-span-2">
-                        <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Total" data-lang-he="סה״כ"></label>
-                        <input type="text" class="item-total w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none text-sm" data-lang-placeholder-en="0.00" data-lang-placeholder-he="0.00" readonly>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">Total</label>
+                        <input type="text" class="item-total w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none text-sm" placeholder="0.00" readonly>
                       </div>
                       <div class="col-span-1 flex items-end justify-end">
                         <button class="remove-item-btn text-red-500 hover:text-red-700 p-2" title="Remove Item">
@@ -295,19 +270,19 @@
               <!-- Totals -->
               <div class="mb-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <i class="fas fa-calculator mr-2 rtl:mr-0 rtl:ml-2 text-blue-600"></i>
-                  <span data-lang-en="Totals" data-lang-he="סיכום"></span>
+                  <i class="fas fa-calculator mr-2 text-blue-600"></i>
+                  Totals
                 </h2>
                 <div class="space-y-4 bg-gray-50 p-4 rounded-md border border-gray-200">
                   <div class="grid grid-cols-2 gap-4">
                     <div>
-                      <label for="subtotal" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Subtotal" data-lang-he="סכום ביניים"></label>
+                      <label for="subtotal" class="block text-sm font-medium text-gray-700 mb-1">Subtotal</label>
                       <input type="text" id="subtotal" class="w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none transition-colors" readonly>
                     </div>
                     <div>
-                      <label for="discount" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Discount" data-lang-he="הנחה"></label>
+                      <label for="discount" class="block text-sm font-medium text-gray-700 mb-1">Discount</label>
                       <div class="flex">
-                        <input type="number" min="0" id="discount" class="w-full px-3 py-2 rounded-l-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="0" data-lang-placeholder-he="0">
+                        <input type="number" min="0" id="discount" class="w-full px-3 py-2 rounded-l-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="0">
                         <select id="discount-type" class="px-3 py-2 rounded-r-md border border-r border-t border-b border-gray-300 bg-gray-50 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                           <option value="percentage">%</option>
                           <option value="fixed">$</option>
@@ -317,16 +292,16 @@
                   </div>
                   <div class="grid grid-cols-2 gap-4">
                     <div>
-                      <label for="tax-rate" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Tax Rate (%)" data-lang-he="שיעור מע״מ (%)"></label>
-                      <input type="number" min="0" step="0.01" id="tax-rate" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" data-lang-placeholder-en="0" data-lang-placeholder-he="0">
+                      <label for="tax-rate" class="block text-sm font-medium text-gray-700 mb-1">Tax Rate (%)</label>
+                      <input type="number" min="0" step="0.01" id="tax-rate" class="w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors" placeholder="0">
                     </div>
                     <div>
-                      <label for="tax-amount" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Tax Amount" data-lang-he="סכום מע״מ"></label>
+                      <label for="tax-amount" class="block text-sm font-medium text-gray-700 mb-1">Tax Amount</label>
                       <input type="text" id="tax-amount" class="w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none transition-colors" readonly>
                     </div>
                   </div>
                   <div>
-                    <label for="total" class="block text-sm font-medium text-gray-700 mb-1" data-lang-en="Total" data-lang-he="סה״כ לתשלום"></label>
+                    <label for="total" class="block text-sm font-medium text-gray-700 mb-1">Total</label>
                     <input type="text" id="total" class="w-full px-3 py-2 rounded-md bg-blue-50 border border-blue-300 outline-none transition-colors font-bold" readonly>
                   </div>
                 </div>
@@ -335,16 +310,16 @@
               <!-- Actions -->
               <div class="flex flex-wrap gap-3 justify-center sm:justify-start">
                 <button id="preview-btn" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm">
-                  <i class="fas fa-eye mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Preview" data-lang-he="תצוגה מקדימה"></span>
+                  <i class="fas fa-eye mr-2"></i> Preview
                 </button>
                 <button id="download-pdf-btn" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 shadow-sm">
-                  <i class="fas fa-download mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Download PDF" data-lang-he="הורד PDF"></span>
+                  <i class="fas fa-download mr-2"></i> Download PDF
                 </button>
                 <button id="print-btn" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 shadow-sm">
-                  <i class="fas fa-print mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Print" data-lang-he="הדפס"></span>
+                  <i class="fas fa-print mr-2"></i> Print
                 </button>
                 <button id="reset-btn" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 shadow-sm">
-                  <i class="fas fa-redo-alt mr-2 rtl:mr-0 rtl:ml-2"></i> <span data-lang-en="Reset" data-lang-he="אפס"></span>
+                  <i class="fas fa-redo-alt mr-2"></i> Reset
                 </button>
               </div>
             </div>
@@ -369,19 +344,19 @@
                   </p>
                 </div>
               </div>
-              <div class="text-right rtl:text-left">
-                <h1 class="text-3xl font-bold text-blue-600 mb-2" data-lang-en="INVOICE" data-lang-he="חשבונית"></h1>
+              <div class="text-right">
+                <h1 class="text-3xl font-bold text-blue-600 mb-2">INVOICE</h1>
                 <div class="text-gray-600">
                   <p>
-                    <span class="font-medium" data-lang-en="Invoice #:" data-lang-he="מספר חשבונית:"></span> 
+                    <span class="font-medium">Invoice #:</span> 
                     <span id="preview-invoice-number">INV-001</span>
                   </p>
                   <p>
-                    <span class="font-medium" data-lang-en="Date:" data-lang-he="תאריך:"></span> 
+                    <span class="font-medium">Date:</span> 
                     <span id="preview-invoice-date">March 12, 2025</span>
                   </p>
                   <p>
-                    <span class="font-medium" data-lang-en="Due Date:" data-lang-he="תאריך לתשלום:"></span> 
+                    <span class="font-medium">Due Date:</span> 
                     <span id="preview-invoice-due-date">April 11, 2025</span>
                   </p>
                 </div>
@@ -389,7 +364,7 @@
             </div>
 
             <div class="mb-8">
-              <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-en="Bill To" data-lang-he="לחיוב"></h3>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">Bill To</h3>
               <div class="text-gray-600">
                 <p id="preview-client-name" class="font-medium">Client Name</p>
                 <p id="preview-client-address">Client Address</p>
@@ -403,11 +378,11 @@
             <div class="mb-8">
               <table class="w-full border-collapse">
                 <thead>
-                  <tr class="bg-gray-100 text-left rtl:text-right">
-                    <th class="py-3 px-4 font-medium text-gray-700" data-lang-en="Description" data-lang-he="תיאור"></th>
-                    <th class="py-3 px-4 font-medium text-gray-700 text-center" data-lang-en="Qty" data-lang-he="כמות"></th>
-                    <th class="py-3 px-4 font-medium text-gray-700 text-right" data-lang-en="Price" data-lang-he="מחיר"></th>
-                    <th class="py-3 px-4 font-medium text-gray-700 text-right" data-lang-en="Total" data-lang-he="סה״כ"></th>
+                  <tr class="bg-gray-100 text-left">
+                    <th class="py-3 px-4 font-medium text-gray-700">Description</th>
+                    <th class="py-3 px-4 font-medium text-gray-700 text-center">Qty</th>
+                    <th class="py-3 px-4 font-medium text-gray-700 text-right">Price</th>
+                    <th class="py-3 px-4 font-medium text-gray-700 text-right">Total</th>
                   </tr>
                 </thead>
                 <tbody id="preview-line-items">
@@ -422,34 +397,34 @@
               </table>
             </div>
 
-            <div class="mb-8 flex justify-end rtl:justify-start">
+            <div class="mb-8 flex justify-end">
               <div class="w-64">
                 <div class="flex justify-between py-2">
-                  <span class="font-medium text-gray-700" data-lang-en="Subtotal:" data-lang-he="סכום ביניים:"></span>
+                  <span class="font-medium text-gray-700">Subtotal:</span>
                   <span id="preview-subtotal" class="text-gray-700">$0.00</span>
                 </div>
                 <div id="preview-discount-row" class="flex justify-between py-2 border-b border-gray-200">
-                  <span class="font-medium text-gray-700" data-lang-en="Discount:" data-lang-he="הנחה:"></span>
+                  <span class="font-medium text-gray-700">Discount:</span>
                   <span id="preview-discount" class="text-gray-700">-$0.00</span>
                 </div>
                 <div id="preview-tax-row" class="flex justify-between py-2">
-                  <span class="font-medium text-gray-700"><span data-lang-en="Tax" data-lang-he="מע״מ"></span> (<span id="preview-tax-rate">0</span>%):</span>
+                  <span class="font-medium text-gray-700">Tax (<span id="preview-tax-rate">0</span>%):</span>
                   <span id="preview-tax-amount" class="text-gray-700">$0.00</span>
                 </div>
                 <div class="flex justify-between py-2 border-t border-gray-200">
-                  <span class="font-bold text-gray-900" data-lang-en="Total:" data-lang-he="סה״כ לתשלום:"></span>
+                  <span class="font-bold text-gray-900">Total:</span>
                   <span id="preview-total" class="font-bold text-blue-600">$0.00</span>
                 </div>
               </div>
             </div>
 
             <div class="mb-8">
-              <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-en="Payment Terms" data-lang-he="תנאי תשלום"></h3>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">Payment Terms</h3>
               <p id="preview-payment-terms" class="text-gray-600">Please pay within 30 days</p>
             </div>
 
             <div>
-              <h3 class="text-lg font-bold text-gray-900 mb-2" data-lang-en="Notes" data-lang-he="הערות"></h3>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">Notes</h3>
               <p id="preview-notes" class="text-gray-600">Thank you for your business!</p>
             </div>
           </div>
@@ -463,10 +438,10 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold tracking-tight mb-4 text-gray-900">
-          <span data-lang-en="Powerful" data-lang-he="תכונות"></span> <span class="text-blue-600" data-lang-en="Features" data-lang-he="חזקות"></span>
+          Powerful <span class="text-blue-600">Features</span>
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          <span data-lang-en="Everything you need to create professional invoices in one convenient tool." data-lang-he="כל מה שאתה צריך כדי ליצור חשבוניות מקצועיות בכלי נוח אחד."></span>
+          Everything you need to create professional invoices in one convenient tool.
         </p>
       </div>
 
@@ -476,8 +451,8 @@
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
             <i class="fas fa-paint-brush text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="Professional Design" data-lang-he="עיצוב מקצועי"></h3>
-          <p class="text-gray-600" data-lang-en="Create clean, professional invoices that reflect your brand." data-lang-he="צור חשבוניות נקיות ומקצועיות המשקפות את המותג שלך."></p>
+          <h3 class="text-xl font-bold mb-2">Professional Design</h3>
+          <p class="text-gray-600">Create clean, professional invoices that reflect your brand.</p>
         </div>
 
         <!-- Feature 2 -->
@@ -485,8 +460,8 @@
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
             <i class="fas fa-calculator text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="Automatic Calculations" data-lang-he="חישובים אוטומטיים"></h3>
-          <p class="text-gray-600" data-lang-en="Never worry about math errors with automatic tax and total calculations." data-lang-he="לעולם לא תדאג לטעויות חישוב עם חישובי מס וסכומים אוטומטיים."></p>
+          <h3 class="text-xl font-bold mb-2">Automatic Calculations</h3>
+          <p class="text-gray-600">Never worry about math errors with automatic tax and total calculations.</p>
         </div>
 
         <!-- Feature 3 -->
@@ -494,8 +469,8 @@
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
             <i class="fas fa-download text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="PDF Export" data-lang-he="ייצוא ל-PDF"></h3>
-          <p class="text-gray-600" data-lang-en="Download your invoice as a professional PDF document with one click." data-lang-he="הורד את החשבונית שלך כמסמך PDF מקצועי בלחיצה אחת."></p>
+          <h3 class="text-xl font-bold mb-2">PDF Export</h3>
+          <p class="text-gray-600">Download your invoice as a professional PDF document with one click.</p>
         </div>
 
         <!-- Feature 4 -->
@@ -503,8 +478,8 @@
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
             <i class="fas fa-save text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="Save Templates" data-lang-he="שמירת תבניות"></h3>
-          <p class="text-gray-600" data-lang-en="Save your invoice templates for quick access in the future." data-lang-he="שמור את תבניות החשבונית שלך לגישה מהירה בעתיד."></p>
+          <h3 class="text-xl font-bold mb-2">Save Templates</h3>
+          <p class="text-gray-600">Save your invoice templates for quick access in the future.</p>
         </div>
 
         <!-- Feature 5 -->
@@ -512,17 +487,17 @@
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
             <i class="fas fa-lock text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="Privacy First" data-lang-he="פרטיות תחילה"></h3>
-          <p class="text-gray-600" data-lang-en="Your data never leaves your browser - complete privacy for your business." data-lang-he="הנתונים שלך לעולם לא עוזבים את הדפדפן - פרטיות מלאה לעסק שלך."></p>
+          <h3 class="text-xl font-bold mb-2">Privacy First</h3>
+          <p class="text-gray-600">Your data never leaves your browser - complete privacy for your business.</p>
         </div>
 
         <!-- Feature 6 -->
         <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col items-center text-center">
           <div class="mb-4 p-3 rounded-full bg-blue-100 text-blue-600">
-            <i class="fas fa-globe text-xl"></i>
+            <i class="fas fa-mobile-alt text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2" data-lang-en="Multilingual Support" data-lang-he="תמיכה רב-לשונית"></h3>
-          <p class="text-gray-600" data-lang-en="Create invoices in English or Hebrew with full RTL support." data-lang-he="צור חשבוניות באנגלית או בעברית עם תמיכה מלאה בכתיבה מימין לשמאל."></p>
+          <h3 class="text-xl font-bold mb-2">Fully Responsive</h3>
+          <p class="text-gray-600">Create invoices on any device - desktop, tablet, or mobile phone.</p>
         </div>
       </div>
     </div>
@@ -533,40 +508,40 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold tracking-tight mb-4 text-gray-900">
-          <span data-lang-en="How It" data-lang-he="איך זה"></span> <span class="text-blue-600" data-lang-en="Works" data-lang-he="עובד"></span>
+          How It <span class="text-blue-600">Works</span>
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          <span data-lang-en="Three simple steps to create professional invoices." data-lang-he="שלושה צעדים פשוטים ליצירת חשבוניות מקצועיות."></span>
+          Three simple steps to create professional invoices.
         </p>
       </div>
 
       <div class="max-w-5xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 rtl:space-x-reverse">
+        <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
           <!-- Step 1 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 md:w-1/3">
             <div class="flex items-center mb-4">
-              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3 rtl:mr-0 rtl:ml-3">1</div>
-              <h3 class="text-xl font-bold" data-lang-en="Enter Information" data-lang-he="הזן מידע"></h3>
+              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3">1</div>
+              <h3 class="text-xl font-bold">Enter Information</h3>
             </div>
-            <p class="text-gray-600" data-lang-en="Add your company details, client information, and invoice items." data-lang-he="הוסף את פרטי החברה שלך, מידע על הלקוח ופריטי חשבונית."></p>
+            <p class="text-gray-600">Add your company details, client information, and invoice items.</p>
           </div>
 
           <!-- Step 2 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 md:w-1/3">
             <div class="flex items-center mb-4">
-              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3 rtl:mr-0 rtl:ml-3">2</div>
-              <h3 class="text-xl font-bold" data-lang-en="Preview" data-lang-he="תצוגה מקדימה"></h3>
+              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3">2</div>
+              <h3 class="text-xl font-bold">Preview</h3>
             </div>
-            <p class="text-gray-600" data-lang-en="Review your invoice in real-time as you make changes." data-lang-he="סקור את החשבונית שלך בזמן אמת תוך כדי ביצוע שינויים."></p>
+            <p class="text-gray-600">Review your invoice in real-time as you make changes.</p>
           </div>
 
           <!-- Step 3 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 md:w-1/3">
             <div class="flex items-center mb-4">
-              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3 rtl:mr-0 rtl:ml-3">3</div>
-              <h3 class="text-xl font-bold" data-lang-en="Download & Send" data-lang-he="הורד ושלח"></h3>
+              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mr-3">3</div>
+              <h3 class="text-xl font-bold">Download & Send</h3>
             </div>
-            <p class="text-gray-600" data-lang-en="Generate a PDF, save your template, or print directly to share with clients." data-lang-he="צור קובץ PDF, שמור את התבנית שלך, או הדפס ישירות לשיתוף עם לקוחות."></p>
+            <p class="text-gray-600">Generate a PDF, save your template, or print directly to share with clients.</p>
           </div>
         </div>
       </div>
@@ -578,10 +553,10 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold tracking-tight mb-4 text-gray-900">
-          <span data-lang-en="Frequently Asked" data-lang-he="שאלות"></span> <span class="text-blue-600" data-lang-en="Questions" data-lang-he="נפוצות"></span>
+          Frequently Asked <span class="text-blue-600">Questions</span>
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          <span data-lang-en="Everything you need to know about our invoice generator." data-lang-he="כל מה שאתה צריך לדעת על מחולל החשבוניות שלנו."></span>
+          Everything you need to know about our invoice generator.
         </p>
       </div>
 
@@ -589,32 +564,32 @@
         <div class="space-y-6">
           <!-- Question 1 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-            <h3 class="text-lg font-bold mb-2" data-lang-en="Is my data secure?" data-lang-he="האם הנתונים שלי מאובטחים?"></h3>
-            <p class="text-gray-600" data-lang-en="Yes, all your information stays in your browser. We don't store any of your invoice data on servers, ensuring complete privacy and security." data-lang-he="כן, כל המידע שלך נשאר בדפדפן שלך. אנחנו לא מאחסנים אף אחד מנתוני החשבונית שלך בשרתים, מה שמבטיח פרטיות ואבטחה מלאות."></p>
+            <h3 class="text-lg font-bold mb-2">Is my data secure?</h3>
+            <p class="text-gray-600">Yes, all your information stays in your browser. We don't store any of your invoice data on servers, ensuring complete privacy and security.</p>
           </div>
 
           <!-- Question 2 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-            <h3 class="text-lg font-bold mb-2" data-lang-en="Can I save my invoices?" data-lang-he="האם אני יכול לשמור את החשבוניות שלי?"></h3>
-            <p class="text-gray-600" data-lang-en="Yes, you can save your invoice templates locally in your browser. You can also download your invoices as PDF files for your records." data-lang-he="כן, אתה יכול לשמור את תבניות החשבונית שלך באופן מקומי בדפדפן שלך. אתה יכול גם להוריד את החשבוניות שלך כקבצי PDF לתיעוד."></p>
+            <h3 class="text-lg font-bold mb-2">Can I save my invoices?</h3>
+            <p class="text-gray-600">Yes, you can save your invoice templates locally in your browser. You can also download your invoices as PDF files for your records.</p>
           </div>
 
           <!-- Question 3 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-            <h3 class="text-lg font-bold mb-2" data-lang-en="Is this free to use?" data-lang-he="האם השימוש חינם?"></h3>
-            <p class="text-gray-600" data-lang-en="Yes, this invoice generator is completely free to use with no limitations or watermarks." data-lang-he="כן, מחולל החשבוניות הזה הוא לחלוטין בחינם לשימוש ללא הגבלות או סימני מים."></p>
+            <h3 class="text-lg font-bold mb-2">Is this free to use?</h3>
+            <p class="text-gray-600">Yes, this invoice generator is completely free to use with no limitations or watermarks.</p>
           </div>
 
           <!-- Question 4 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-            <h3 class="text-lg font-bold mb-2" data-lang-en="Can I switch between languages?" data-lang-he="האם אני יכול להחליף בין שפות?"></h3>
-            <p class="text-gray-600" data-lang-en="Yes, you can easily switch between English and Hebrew at any time. The application will remember your language preference for future visits." data-lang-he="כן, אתה יכול להחליף בקלות בין אנגלית לעברית בכל עת. האפליקציה תזכור את העדפת השפה שלך לביקורים עתידיים."></p>
+            <h3 class="text-lg font-bold mb-2">Can I customize the invoice design?</h3>
+            <p class="text-gray-600">The current version offers a professional, clean design that works for most businesses. We plan to add more design options in future updates.</p>
           </div>
 
           <!-- Question 5 -->
           <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-            <h3 class="text-lg font-bold mb-2" data-lang-en="What if I need help?" data-lang-he="מה אם אני צריך עזרה?"></h3>
-            <p class="text-gray-600" data-lang-en="You can contact our support team at support@invoicemaster.com and we'll be happy to assist you." data-lang-he="אתה יכול ליצור קשר עם צוות התמיכה שלנו בכתובת support@invoicemaster.com ונשמח לעזור לך."></p>
+            <h3 class="text-lg font-bold mb-2">What if I need help?</h3>
+            <p class="text-gray-600">You can contact our support team at support@invoicemaster.com and we'll be happy to assist you.</p>
           </div>
         </div>
       </div>
@@ -625,12 +600,12 @@
   <footer class="py-8 bg-white border-t border-gray-200 no-print">
     <div class="container mx-auto px-4 md:px-6 text-center">
       <p class="text-gray-600">
-        © 2025 Invoice Master. <span data-lang-en="All rights reserved." data-lang-he="כל הזכויות שמורות."></span>
+        © 2025 Invoice Master. All rights reserved.
       </p>
       <div class="mt-2">
-        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm" data-lang-en="Privacy Policy" data-lang-he="מדיניות פרטיות"></a>
-        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm" data-lang-en="Terms of Service" data-lang-he="תנאי שימוש"></a>
-        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm" data-lang-en="Contact" data-lang-he="צור קשר"></a>
+        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm">Privacy Policy</a>
+        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm">Terms of Service</a>
+        <a href="#" class="text-blue-600 hover:text-blue-800 mx-2 text-sm">Contact</a>
       </div>
     </div>
   </footer>
@@ -640,7 +615,7 @@
     <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
       <div class="p-6 border-b border-gray-200">
         <div class="flex justify-between items-center">
-          <h3 class="text-xl font-bold text-gray-900" data-lang-en="Saved Templates" data-lang-he="תבניות שמורות"></h3>
+          <h3 class="text-xl font-bold text-gray-900">Saved Templates</h3>
           <button id="close-templates-modal" class="text-gray-500 hover:text-gray-700">
             <i class="fas fa-times"></i>
           </button>
@@ -649,7 +624,7 @@
       <div class="p-6 overflow-y-auto max-h-[60vh]">
         <div id="templates-list" class="space-y-4">
           <!-- Templates will be loaded here -->
-          <div class="text-center text-gray-500" data-lang-en="No saved templates found." data-lang-he="לא נמצאו תבניות שמורות."></div>
+          <div class="text-center text-gray-500">No saved templates found.</div>
         </div>
       </div>
     </div>
@@ -672,66 +647,6 @@
     const templatesModal = document.getElementById('templates-modal');
     const closeTemplatesModal = document.getElementById('close-templates-modal');
     const templatesList = document.getElementById('templates-list');
-    const languageSwitcher = document.getElementById('language-switcher');
-    const languageDropdown = document.getElementById('language-dropdown');
-    const languageOptions = document.querySelectorAll('.language-option');
-    const mobileLanguageSwitcher = document.getElementById('mobile-language-switcher');
-
-    // Language handling
-    let currentLanguage = localStorage.getItem('invoiceLanguage') || 'en';
-    
-    // Set initial language
-    setLanguage(currentLanguage);
-    
-    // Language switcher event listeners
-    languageSwitcher.addEventListener('click', () => {
-      languageDropdown.classList.toggle('hidden');
-    });
-    
-    languageOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        const lang = option.getAttribute('data-lang');
-        setLanguage(lang);
-        languageDropdown.classList.add('hidden');
-      });
-    });
-    
-    mobileLanguageSwitcher.addEventListener('change', () => {
-      setLanguage(mobileLanguageSwitcher.value);
-    });
-
-    // Set language function
-    function setLanguage(lang) {
-      currentLanguage = lang;
-      localStorage.setItem('invoiceLanguage', lang);
-      
-      // Update document direction
-      if (lang === 'he') {
-        document.documentElement.setAttribute('dir', 'rtl');
-        document.body.classList.remove('lang-en');
-        document.body.classList.add('lang-he');
-      } else {
-        document.documentElement.setAttribute('dir', 'ltr');
-        document.body.classList.remove('lang-he');
-        document.body.classList.add('lang-en');
-      }
-      
-      // Update mobile language switcher
-      mobileLanguageSwitcher.value = lang;
-      
-      // Update all text elements
-      document.querySelectorAll('[data-lang-en]').forEach(el => {
-        el.textContent = lang === 'en' ? el.getAttribute('data-lang-en') : el.getAttribute('data-lang-he');
-      });
-      
-      // Update all placeholders
-      document.querySelectorAll('[data-lang-placeholder-en]').forEach(el => {
-        el.placeholder = lang === 'en' ? el.getAttribute('data-lang-placeholder-en') : el.getAttribute('data-lang-placeholder-he');
-      });
-      
-      // Update preview
-      updateInvoicePreview();
-    }
 
     // Set today's date as default
     const today = new Date();
@@ -744,18 +659,16 @@
 
     // Format currency
     function formatCurrency(amount) {
-      const currencySymbol = currentLanguage === 'he' ? '₪' : '$';
-      return new Intl.NumberFormat(currentLanguage === 'he' ? 'he-IL' : 'en-US', {
+      return new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: currentLanguage === 'he' ? 'ILS' : 'USD',
-        currencyDisplay: 'symbol'
+        currency: 'USD'
       }).format(amount);
     }
 
     // Format date
     function formatDate(dateString) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(dateString).toLocaleDateString(currentLanguage === 'he' ? 'he-IL' : 'en-US', options);
+      return new Date(dateString).toLocaleDateString('en-US', options);
     }
 
     // Calculate line item total
@@ -825,20 +738,20 @@
       newItem.innerHTML = `
         <div class="grid grid-cols-12 gap-3">
           <div class="col-span-12 sm:col-span-5">
-            <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Description" data-lang-he="תיאור">${currentLanguage === 'en' ? 'Description' : 'תיאור'}</label>
-            <input type="text" class="item-description w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="Item description" data-lang-placeholder-he="תיאור הפריט" placeholder="${currentLanguage === 'en' ? 'Item description' : 'תיאור הפריט'}">
+            <label class="block text-xs font-medium text-gray-700 mb-1">Description</label>
+            <input type="text" class="item-description w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="Item description">
           </div>
           <div class="col-span-4 sm:col-span-2">
-            <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Quantity" data-lang-he="כמות">${currentLanguage === 'en' ? 'Quantity' : 'כמות'}</label>
-            <input type="number" min="1" class="item-quantity w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="Qty" data-lang-placeholder-he="כמות" placeholder="${currentLanguage === 'en' ? 'Qty' : 'כמות'}" value="1">
+            <label class="block text-xs font-medium text-gray-700 mb-1">Quantity</label>
+            <input type="number" min="1" class="item-quantity w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="Qty" value="1">
           </div>
           <div class="col-span-8 sm:col-span-2">
-            <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Price" data-lang-he="מחיר">${currentLanguage === 'en' ? 'Price' : 'מחיר'}</label>
-            <input type="number" min="0" step="0.01" class="item-price w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" data-lang-placeholder-en="0.00" data-lang-placeholder-he="0.00" placeholder="0.00">
+            <label class="block text-xs font-medium text-gray-700 mb-1">Price</label>
+            <input type="number" min="0" step="0.01" class="item-price w-full px-3 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors text-sm" placeholder="0.00">
           </div>
           <div class="col-span-11 sm:col-span-2">
-            <label class="block text-xs font-medium text-gray-700 mb-1" data-lang-en="Total" data-lang-he="סה״כ">${currentLanguage === 'en' ? 'Total' : 'סה״כ'}</label>
-            <input type="text" class="item-total w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none text-sm" data-lang-placeholder-en="0.00" data-lang-placeholder-he="0.00" placeholder="0.00" readonly>
+            <label class="block text-xs font-medium text-gray-700 mb-1">Total</label>
+            <input type="text" class="item-total w-full px-3 py-2 rounded-md bg-gray-100 border border-gray-300 outline-none text-sm" placeholder="0.00" readonly>
           </div>
           <div class="col-span-1 flex items-end justify-end">
             <button class="remove-item-btn text-red-500 hover:text-red-700 p-2" title="Remove Item">
@@ -867,8 +780,8 @@
     // Update invoice preview
     function updateInvoicePreview() {
       // Company Information
-      document.getElementById('preview-company-name').textContent = document.getElementById('company-name').value || (currentLanguage === 'en' ? 'Your Company Name' : 'שם החברה שלך');
-      document.getElementById('preview-company-address').textContent = document.getElementById('company-address').value || (currentLanguage === 'en' ? 'Company Address' : 'כתובת החברה');
+      document.getElementById('preview-company-name').textContent = document.getElementById('company-name').value || 'Your Company Name';
+      document.getElementById('preview-company-address').textContent = document.getElementById('company-address').value || 'Company Address';
       document.getElementById('preview-company-email').textContent = document.getElementById('company-email').value || 'company@example.com';
       document.getElementById('preview-company-phone').textContent = document.getElementById('company-phone').value || '(123) 456-7890';
       
@@ -882,8 +795,8 @@
       }
       
       // Client Information
-      document.getElementById('preview-client-name').textContent = document.getElementById('client-name').value || (currentLanguage === 'en' ? 'Client Name' : 'שם הלקוח');
-      document.getElementById('preview-client-address').textContent = document.getElementById('client-address').value || (currentLanguage === 'en' ? 'Client Address' : 'כתובת הלקוח');
+      document.getElementById('preview-client-name').textContent = document.getElementById('client-name').value || 'Client Name';
+      document.getElementById('preview-client-address').textContent = document.getElementById('client-address').value || 'Client Address';
       document.getElementById('preview-client-email').textContent = document.getElementById('client-email').value || 'client@example.com';
       document.getElementById('preview-client-phone').textContent = document.getElementById('client-phone').value || '(123) 456-7890';
       
@@ -891,20 +804,20 @@
       document.getElementById('preview-invoice-number').textContent = document.getElementById('invoice-number').value || 'INV-001';
       
       const invoiceDate = document.getElementById('invoice-date').value;
-      document.getElementById('preview-invoice-date').textContent = invoiceDate ? formatDate(invoiceDate) : formatDate(new Date());
+      document.getElementById('preview-invoice-date').textContent = invoiceDate ? formatDate(invoiceDate) : 'March 12, 2025';
       
       const invoiceDueDate = document.getElementById('invoice-due-date').value;
-      document.getElementById('preview-invoice-due-date').textContent = invoiceDueDate ? formatDate(invoiceDueDate) : formatDate(dueDate);
+      document.getElementById('preview-invoice-due-date').textContent = invoiceDueDate ? formatDate(invoiceDueDate) : 'April 11, 2025';
       
-      document.getElementById('preview-payment-terms').textContent = document.getElementById('payment-terms').value || (currentLanguage === 'en' ? 'Please pay within 30 days' : 'נא לשלם תוך 30 יום');
-      document.getElementById('preview-notes').textContent = document.getElementById('invoice-notes').value || (currentLanguage === 'en' ? 'Thank you for your business!' : 'תודה על העסקים שלך!');
+      document.getElementById('preview-payment-terms').textContent = document.getElementById('payment-terms').value || 'Please pay within 30 days';
+      document.getElementById('preview-notes').textContent = document.getElementById('invoice-notes').value || 'Thank you for your business!';
       
       // Line Items
       const lineItemsTableBody = document.getElementById('preview-line-items');
       lineItemsTableBody.innerHTML = '';
       
       document.querySelectorAll('.line-item').forEach(item => {
-        const description = item.querySelector('.item-description').value || (currentLanguage === 'en' ? 'Item' : 'פריט');
+        const description = item.querySelector('.item-description').value || 'Item';
         const quantity = parseFloat(item.querySelector('.item-quantity').value) || 0;
         const price = parseFloat(item.querySelector('.item-price').value) || 0;
         const total = quantity * price;
@@ -926,10 +839,10 @@
         const placeholderRow = document.createElement('tr');
         placeholderRow.className = 'border-b border-gray-200';
         placeholderRow.innerHTML = `
-          <td class="py-3 px-4 text-gray-700">${currentLanguage === 'en' ? 'Sample Item' : 'פריט לדוגמה'}</td>
+          <td class="py-3 px-4 text-gray-700">Sample Item</td>
           <td class="py-3 px-4 text-gray-700 text-center">1</td>
-          <td class="py-3 px-4 text-gray-700 text-right">${formatCurrency(0)}</td>
-          <td class="py-3 px-4 text-gray-700 text-right">${formatCurrency(0)}</td>
+          <td class="py-3 px-4 text-gray-700 text-right">$0.00</td>
+          <td class="py-3 px-4 text-gray-700 text-right">$0.00</td>
         `;
         
         lineItemsTableBody.appendChild(placeholderRow);
@@ -957,7 +870,7 @@
         
         pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
         
-        const companyName = document.getElementById('company-name').value || (currentLanguage === 'en' ? 'Invoice' : 'חשבונית');
+        const companyName = document.getElementById('company-name').value || 'Invoice';
         const invoiceNumber = document.getElementById('invoice-number').value || 'INV-001';
         pdf.save(`${companyName}-${invoiceNumber}.pdf`);
       });
@@ -965,11 +878,10 @@
 
     // Save template to local storage
     function saveTemplate() {
-      const templateName = prompt(currentLanguage === 'en' ? 'Enter a name for this template:' : 'הזן שם לתבנית זו:');
+      const templateName = prompt('Enter a name for this template:');
       if (!templateName) return;
       
       const formData = {
-        language: currentLanguage,
         company: {
           name: document.getElementById('company-name').value,
           email: document.getElementById('company-email').value,
@@ -1006,7 +918,7 @@
       // Save back to localStorage
       localStorage.setItem('invoiceTemplates', JSON.stringify(templates));
       
-      alert(currentLanguage === 'en' ? `Template "${templateName}" saved successfully!` : `התבנית "${templateName}" נשמרה בהצלחה!`);
+      alert(`Template "${templateName}" saved successfully!`);
       
       // Update templates list if modal is open
       if (!templatesModal.classList.contains('hidden')) {
@@ -1020,7 +932,7 @@
       const templateNames = Object.keys(templates);
       
       if (templateNames.length === 0) {
-        templatesList.innerHTML = `<div class="text-center text-gray-500">${currentLanguage === 'en' ? 'No saved templates found.' : 'לא נמצאו תבניות שמורות.'}</div>`;
+        templatesList.innerHTML = '<div class="text-center text-gray-500">No saved templates found.</div>';
         return;
       }
       
@@ -1034,7 +946,7 @@
         templateCard.innerHTML = `
           <div class="flex justify-between items-center">
             <h4 class="font-medium text-gray-900">${name}</h4>
-            <div class="flex space-x-2 rtl:space-x-reverse">
+            <div class="flex space-x-2">
               <button class="text-blue-600 hover:text-blue-800 p-1 load-template" data-template="${name}">
                 <i class="fas fa-upload"></i>
               </button>
@@ -1044,7 +956,7 @@
             </div>
           </div>
           <div class="text-sm text-gray-600 mt-1">
-            ${template.company.name || (currentLanguage === 'en' ? 'Company' : 'חברה')} - ${template.invoice.date ? formatDate(template.invoice.date) : (currentLanguage === 'en' ? 'No date' : 'אין תאריך')}
+            ${template.company.name || 'Company'} - ${template.invoice.date ? formatDate(template.invoice.date) : 'No date'}
           </div>
         `;
         
@@ -1060,12 +972,12 @@
         });
         
         deleteBtn.addEventListener('click', () => {
-          if (confirm(currentLanguage === 'en' ? `Are you sure you want to delete the template "${name}"?` : `האם אתה בטוח שברצונך למחוק את התבנית "${name}"?`)) {
+          if (confirm(`Are you sure you want to delete the template "${name}"?`)) {
             deleteTemplate(name);
             templateCard.remove();
             
             if (templatesList.children.length === 0) {
-              templatesList.innerHTML = `<div class="text-center text-gray-500">${currentLanguage === 'en' ? 'No saved templates found.' : 'לא נמצאו תבניות שמורות.'}</div>`;
+              templatesList.innerHTML = '<div class="text-center text-gray-500">No saved templates found.</div>';
             }
           }
         });
@@ -1078,11 +990,6 @@
       const template = templates[templateName];
       
       if (!template) return;
-      
-      // Set language if different
-      if (template.language && template.language !== currentLanguage) {
-        setLanguage(template.language);
-      }
       
       // Fill in form fields
       document.getElementById('company-name').value = template.company.name || '';
@@ -1119,12 +1026,12 @@
       delete templates[templateName];
       localStorage.setItem('invoiceTemplates', JSON.stringify(templates));
       
-      alert(currentLanguage === 'en' ? `Template "${templateName}" deleted successfully!` : `התבנית "${templateName}" נמחקה בהצלחה!`);
+      alert(`Template "${templateName}" deleted successfully!`);
     }
 
     // Reset the form
     function resetForm() {
-      if (!confirm(currentLanguage === 'en' ? 'Are you sure you want to reset all fields? This cannot be undone.' : 'האם אתה בטוח שברצונך לאפס את כל השדות? פעולה זו אינה ניתנת לביטול.')) return;
+      if (!confirm('Are you sure you want to reset all fields? This cannot be undone.')) return;
       
       // Reset all form fields
       document.querySelectorAll('input, textarea, select').forEach(field => {
@@ -1136,7 +1043,7 @@
             dueDate.setDate(dueDate.getDate() + 30);
             field.valueAsDate = dueDate;
           }
-        } else if (field.id !== 'mobile-language-switcher' && field.id !== 'discount-type') {
+        } else {
           field.value = '';
         }
       });
@@ -1148,13 +1055,6 @@
       // Update preview
       updateInvoicePreview();
     }
-
-    // Click outside to close dropdowns
-    document.addEventListener('click', function(event) {
-      if (!languageSwitcher.contains(event.target) && !languageDropdown.contains(event.target)) {
-        languageDropdown.classList.add('hidden');
-      }
-    });
 
     // Event Listeners
     document.addEventListener('DOMContentLoaded', function() {
@@ -1173,7 +1073,7 @@
             calculateInvoiceTotal();
             updateInvoicePreview();
           } else {
-            alert(currentLanguage === 'en' ? 'You must have at least one line item.' : 'חייב להיות לפחות פריט אחד.');
+            alert('You must have at least one line item.');
           }
         });
       });
@@ -1244,19 +1144,7 @@
         document.documentElement.classList.toggle('dark');
         themeToggle.querySelector('.fa-moon').classList.toggle('hidden');
         themeToggle.querySelector('.fa-sun').classList.toggle('hidden');
-        
-        // Save theme preference
-        const isDark = document.documentElement.classList.contains('dark');
-        localStorage.setItem('invoiceTheme', isDark ? 'dark' : 'light');
       });
-      
-      // Load saved theme
-      const savedTheme = localStorage.getItem('invoiceTheme');
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        themeToggle.querySelector('.fa-moon').classList.add('hidden');
-        themeToggle.querySelector('.fa-sun').classList.remove('hidden');
-      }
       
       // Mobile menu toggle
       mobileMenuBtn.addEventListener('click', () => {
